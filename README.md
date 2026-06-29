@@ -1,73 +1,63 @@
-# React + TypeScript + Vite
+# 🌍 Velora Travel App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Discover India's Hidden Gems with Velora**
 
-Currently, two official plugins are available:
+Velora is a modern, full-stack travel booking and exploration application designed to inspire your next journey. With a stunning cinematic UI, live weather integration, dark/light mode support, and seamless booking links, Velora takes the hassle out of travel planning.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Live Demo
+**[Experience Velora Live on Vercel](https://velora-travel-app.vercel.app)**  
+*(Note: If your Vercel URL is different, please update this link!)*
 
-## React Compiler
+## ✨ Key Features
+- **Cinematic Experience**: Immersive video heroes, dynamic skies, and high-quality destination galleries.
+- **Theme Engine**: Fully integrated Light and Dark mode that shifts instantly based on user preference.
+- **Smart Dashboard**: A beautifully designed user dashboard to track saved trips, upcoming journeys, and travel DNA stats.
+- **Live Weather**: Real-time weather data powered by OpenWeatherMap API for every destination.
+- **Third-Party Integration**: Direct booking redirect links to Booking.com and OYO Rooms.
+- **Hybrid Database**: Built with a flexible storage engine that defaults to LocalStorage but instantly scales to Firebase just by dropping in your API keys!
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠 Tech Stack
+- **Frontend**: React 18, TypeScript, Vite
+- **Styling**: Tailwind CSS, Framer Motion (for smooth animations)
+- **State Management**: React Context API
+- **Icons**: Lucide React
+- **Hosting**: Vercel Ready
 
-## Expanding the ESLint configuration
+## 📦 Getting Started Locally
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/Abhilash-ai/Velora-Travel-App.git
+   cd Velora-Travel-App
+   ```
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+3. **Start the Development Server**
+   ```bash
+   npm run dev
+   ```
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+4. **Build for Production**
+   ```bash
+   npm run build
+   ```
+
+## 🔐 Environment Variables (Optional)
+By default, Velora runs flawlessly on LocalStorage. However, if you want to unlock live Maps and a true Firebase Backend, create a `.env` file in the root directory:
+
+```env
+VITE_GOOGLE_MAPS_API_KEY=your_google_maps_key
+VITE_FIREBASE_API_KEY=your_firebase_api_key
+VITE_FIREBASE_AUTH_DOMAIN=your_auth_domain
+VITE_FIREBASE_PROJECT_ID=your_project_id
+VITE_FIREBASE_STORAGE_BUCKET=your_storage_bucket
+VITE_FIREBASE_MESSAGING_SENDER_ID=your_messaging_sender_id
+VITE_FIREBASE_APP_ID=your_app_id
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🤝 Contributing
+Contributions are always welcome! Feel free to open an issue or submit a pull request.
