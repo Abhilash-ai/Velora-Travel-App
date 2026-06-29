@@ -1,0 +1,12 @@
+const fs = require('fs');
+let f = fs.readFileSync('src/data/dbSeed.ts', 'utf-8');
+f = f.replace(/price: '\$800'/g, "price: '18500'");
+f = f.replace(/price: '\$950'/g, "price: '24500'");
+f = f.replace(/price: '\$600'/g, "price: '12500'");
+f = f.replace(/price: '\$750'/g, "price: '16500'");
+f = f.replace(/price: '\$850'/g, "price: '19500'");
+f = f.replace(/price: '\$700'/g, "price: '14500'");
+f = f.replace(/price: '\$900'/g, "price: '21500'");
+f = f.replace(/price: '\$500'/g, "price: '8500'");
+f = f.replace(/price: '\$1100'/g, "price: '32500'");
+fs.writeFileSync('src/data/dbSeed.ts', f);

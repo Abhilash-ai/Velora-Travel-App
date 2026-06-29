@@ -1,0 +1,99 @@
+.navbar-container {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  width: calc(100% - 48px);
+  max-width: 480px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 8px;
+  border-radius: 24px;
+  background: rgba(15, 10, 30, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 
+    0 10px 30px -10px rgba(0, 0, 0, 0.7),
+    0 1px 1px 0 rgba(255, 255, 255, 0.1) inset;
+  transition: bottom var(--transition-normal);
+}
+
+/* For hiding navbar when viewing full details */
+.navbar-hidden {
+  bottom: -100px;
+}
+
+.nav-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 10px 16px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border-radius: 16px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  flex: 1;
+  transition: color var(--transition-fast);
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.nav-item:hover {
+  color: var(--text-primary);
+}
+
+.nav-item-active {
+  color: white;
+}
+
+.nav-icon {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s var(--ease-elastic);
+}
+
+.nav-item:active .nav-icon {
+  transform: scale(0.85);
+}
+
+.nav-item-active .nav-icon {
+  transform: scale(1.1);
+  color: var(--color-accent-purple);
+}
+
+/* Sliding active pill indicator */
+.nav-indicator {
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: -1;
+  transition: left 0.3s cubic-bezier(0.25, 1, 0.5, 1), width 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Text label reveal animation */
+.nav-label {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 0.7rem;
+  opacity: 0.7;
+  transform: translateY(2px);
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+
+.nav-item-active .nav-label {
+  opacity: 1;
+  transform: translateY(0);
+}

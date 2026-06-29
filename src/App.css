@@ -1,0 +1,78 @@
+/* App Header Branding */
+.app-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 70px;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  background: rgba(9, 5, 20, 0.4);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.app-logo {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  background: linear-gradient(135deg, white, var(--color-accent-purple), var(--color-accent-cyan));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform var(--transition-fast);
+}
+
+.app-logo:hover {
+  transform: scale(1.02);
+}
+
+.logo-symbol {
+  width: 24px;
+  height: 24px;
+  color: var(--color-accent-purple);
+  filter: drop-shadow(0 0 5px var(--color-accent-purple));
+  animation: logoSpin 12s infinite linear;
+}
+
+@keyframes logoSpin {
+  to { transform: rotate(360deg); }
+}
+
+.app-header-actions {
+  display: flex;
+  gap: 16px;
+}
+
+.header-btn {
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+}
+
+/* App container centering adjustments */
+.app-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  flex: 1;
+}
+
+@media (max-width: 768px) {
+  .app-header {
+    padding: 0 20px;
+  }
+  .app-logo {
+    font-size: 1.15rem;
+  }
+}
