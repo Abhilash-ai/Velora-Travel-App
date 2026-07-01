@@ -7,6 +7,7 @@ import {
 } from 'lucide-react';
 import { useTravel } from '../../v2/context/TravelContext';
 import { fetchWeatherForDestination, type WeatherData } from '../../services/weatherService';
+import { DestinationReviews } from '../../v2/components/agency/DestinationReviews';
 
 interface DestinationDetailsProps {
   destination: any;
@@ -215,6 +216,9 @@ export const DestinationDetails: React.FC<DestinationDetailsProps> = ({ destinat
               {/* Fallback overlay if API key is missing, iframe will just show an error inside it natively which we let pass for now, or we could conditionally render */}
             </div>
           </div>
+          
+          {/* Traveler Reviews Section */}
+          <DestinationReviews destinationId={destination.id} />
         </div>
 
         {/* Sidebar Booking Card */}

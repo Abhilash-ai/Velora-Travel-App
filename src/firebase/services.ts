@@ -297,5 +297,45 @@ export const dbService = {
       const snapshot = await getDocs(collection(db, "users", userId, "savedTrips"));
       return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
     }
+  },
+
+  submitReview: async (destinationId: string, userId: string, review: any): Promise<void> => {
+    if (useMock) {
+      const reviews = JSON.parse(localStorage.getItem(`velora_reviews_${destinationId}`) || '[]');
+      reviews.push({ id: `rev-${Date.now()}`, userId, date: new Date().toISOString(), ...review });
+      localStorage.setItem(`velora_reviews_${destinationId}`, JSON.stringify(reviews));
+    } else {
+      const newReviewRef = doc(collection(db, "destinations", destinationId, "reviews"));
+      await setDoc(newReviewRef, { userId, date: new Date().toISOString(), ...review });
+    }
+  },
+
+  getReviews: async (destinationId: string): Promise<any[]> => {
+    if (useMock) {
+      return JSON.parse(localStorage.getItem(`velora_reviews_${destinationId}`) || '[]');
+    } else {
+      const snapshot = await getDocs(collection(db, "destinations", destinationId, "reviews"));
+      return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    }
+  },
+
+  createBooking: async (userId: string, bookingData: any): Promise<void> => {
+    if (useMock) {
+      const bookings = JSON.parse(localStorage.getItem(`velora_bookings_${userId}`) || '[]');
+      bookings.push({ id: `book-${Date.now()}`, date: new Date().toISOString(), ...bookingData });
+      localStorage.setItem(`velora_bookings_${userId}`, JSON.stringify(bookings));
+    } else {
+      const newBookingRef = doc(collection(db, "users", userId, "bookings"));
+      await setDoc(newBookingRef, { date: new Date().toISOString(), ...bookingData });
+    }
+  },
+
+  getBookings: async (userId: string): Promise<any[]> => {
+    if (useMock) {
+      return JSON.parse(localStorage.getItem(`velora_bookings_${userId}`) || '[]');
+    } else {
+      const snapshot = await getDocs(collection(db, "users", userId, "bookings"));
+      return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    }
   }
 };

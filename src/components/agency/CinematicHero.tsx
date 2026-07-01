@@ -3,6 +3,7 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -17,6 +18,7 @@ export const CinematicHero: React.FC<CinematicHeroProps> = ({ onExplore, onPlan 
   const cloudLeftRef = useRef<HTMLDivElement>(null);
   const cloudRightRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
+  const { t } = useTranslation();
 
   useGSAP(() => {
     const tl = gsap.timeline({
@@ -105,7 +107,7 @@ export const CinematicHero: React.FC<CinematicHeroProps> = ({ onExplore, onPlan 
           transition={{ duration: 1, delay: 0.5 }}
           className="text-white/80 uppercase tracking-[0.5em] text-sm md:text-base font-medium mb-6"
         >
-          Every journey begins beyond the clouds
+          {t('hero.badge')}
         </motion.p>
         
         <motion.h1 
@@ -115,7 +117,7 @@ export const CinematicHero: React.FC<CinematicHeroProps> = ({ onExplore, onPlan 
           className="text-6xl md:text-8xl lg:text-9xl font-black text-white tracking-tighter drop-shadow-2xl mb-12"
           style={{ textShadow: '0 10px 40px rgba(0,0,0,0.5)' }}
         >
-          Discover India's<br/>Hidden Wonders
+          {t('hero.title1')}<br/>{t('hero.title2')}
         </motion.h1>
 
         <motion.div 
@@ -125,10 +127,10 @@ export const CinematicHero: React.FC<CinematicHeroProps> = ({ onExplore, onPlan 
           className="flex flex-col sm:flex-row gap-6"
         >
           <button onClick={onExplore} className="px-8 py-4 bg-white text-slate-900 font-bold rounded-full hover:scale-105 transition-transform shadow-xl">
-            Explore India
+            {t('destinations.explore')}
           </button>
           <button onClick={onPlan} className="px-8 py-4 bg-transparent border border-white/30 backdrop-blur-md text-white font-bold rounded-full hover:bg-white/10 transition-colors">
-            Plan My Journey
+            {t('hero.cta')}
           </button>
         </motion.div>
       </div>

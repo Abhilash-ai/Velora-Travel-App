@@ -142,12 +142,28 @@ export const CheckoutView: React.FC<CheckoutViewProps> = ({ destination, onClose
       return;
     }
 
+    let orderId = undefined;
+    try {
+      const apiRes = await fetch('/api/razorpay', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ amount: total })
+      });
+      if (apiRes.ok) {
+        const data = await apiRes.json();
+        orderId = data.id;
+      }
+    } catch (error) {
+      console.log('API route not available locally, proceeding with mock order.');
+    }
+
     const options = {
       key: import.meta.env.VITE_RAZORPAY_API_KEY || 'rzp_test_mock_key',
       amount: total * 100, 
       currency: "INR",
       name: "Velora Travel",
       description: `Booking for ${destName}`,
+      order_id: orderId, // Fetched from backend
       image: "https://ui-avatars.com/api/?name=Velora&background=2563eb&color=fff",
       handler: function () {
         setIsProcessing(false);
