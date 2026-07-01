@@ -18,19 +18,17 @@ const GlobalModals: React.FC = () => {
   const { activeModal, closeModal } = useUI();
 
   return (
-    <>
+    <AnimatePresence mode="wait">
       {activeModal === 'aiPlanner' && (
-        <div className="fixed inset-0 z-[2000] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+        <div key="ai" className="fixed inset-0 z-[2000] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
           <AIPlanner onClose={closeModal} prefilledDestination="" />
         </div>
       )}
       {activeModal === 'auth' && (
-        <AuthModal />
+        <AuthModal key="auth" />
       )}
-      <AnimatePresence>
-        {activeModal === 'settings' && <SettingsModal />}
-      </AnimatePresence>
-    </>
+      {activeModal === 'settings' && <SettingsModal key="settings" />}
+    </AnimatePresence>
   );
 };
 
