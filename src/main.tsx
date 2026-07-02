@@ -14,6 +14,12 @@ const lenis = new Lenis({
   lerp: 0.1,
 });
 
+function raf(time: number) {
+  lenis.raf(time);
+  requestAnimationFrame(raf);
+}
+requestAnimationFrame(raf);
+
 // Register service worker for PWA
 if ('serviceWorker' in navigator) {
   registerSW({ immediate: true })

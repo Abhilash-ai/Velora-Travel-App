@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Star, User, MessageCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { dbService } from '../../../firebase/services';
-import { useAuth } from '../../../context/AuthContext';
-import { Button } from '../../ui/Button';
+import { useAuth } from '../../context/AuthContext';
+import { Button } from '../ui/Button';
 
 interface DestinationReviewsProps {
   destinationId: string;
